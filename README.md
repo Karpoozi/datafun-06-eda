@@ -61,16 +61,61 @@ import matplotlib.pyplot as plt
 
 # Exploratory Data Analysis
 1. Load the dataset:
-  ```
-  df = sns.load_dataset('titanic')
-  ```
+```
+df = sns.load_dataset('titanic')
+```
 
 2. Inspect the data:
-   ```
-   print(df.head(10))
-   print(df.shape)
-   print(df.dtypes)
-   ```
-    
+```
+print(df.head(10))
+print(df.shape)
+print(df.dtypes)
+```
+
+3. Initial Descriptive Statistics
+```
+print(df.describe())
+```
+
+4. Initial Data Distribution for Numerical Columns
+```
+df['sepal_length'].hist()
+df.hist()
+plt.show()
+```
+
+5. Initial Data Distribution for Categorical Columns
+```
+# Inspect value counts by categorical column
+df['species'].value_counts()
+
+# Inspect value counts for all categorical columns
+for col in df.select_dtypes(include=['object', 'category']).columns:
+    # Display count plot
+    sns.countplot(x=col, data=df)
+    plt.title(f'Distribution of {col}')
+    plt.show()
+
+# Show all plots
+plt.show()
+```
+
+6. Initial Data Transformation and Feature Engineering
+Rename a column:
+```
+df.rename(columns={'fare': 'ticket_price'}, inplace=True)
+```
+Add a new column:
+```
+inflation_rate = 14214.51 / 100  # 14,214.51% inflation rate in England since 1912 according to ChatGPT
+df['inflated_price'] = round(df['ticket_price'] * (1 + inflation_rate), 2) # add new column 'inflated_price' which calculates the inflated ticket prices
+```
+
+7. Initial Visualizations
+Each subsection should have the following parts:
+Goal: The question you are exploring.
+Chart Type: Tell us what kind of chart you choose to illustrate this goal.
+Chart: Display the chart.
+Story: Use Markdown cell(s) to document your observations and insights.
    
 
