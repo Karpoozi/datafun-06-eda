@@ -50,3 +50,27 @@ python -m pip freeze > requirements.txt
 ```
 
 # Git add / commit / push
+
+# Import Dependencies
+Import dependencies for the project
+```
+import seaborn as sns
+import pandas as pd
+import matplotlib.pyplot as plt
+```
+
+# Exploratory Data Analysis
+1. Load the dataset:
+  ```
+  df = sns.load_dataset('titanic')
+  ```
+
+2. Inspect the data:
+   ```
+   print(df.head(10))
+   print(df.shape)
+   print(df.dtypes)
+   ```
+    
+   
+
